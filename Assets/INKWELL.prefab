@@ -173,11 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c7c6272b545f64fb0ec3588443870c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 10
+  maxHealth: 10
   knockbackForce: 10
   rb: {fileID: 2051619321592223165}
   infantrySpeed: 0
   isImmune: 0
+  HB: {fileID: 0}
 --- !u!1 &5005062570069019666
 GameObject:
   m_ObjectHideFlags: 0

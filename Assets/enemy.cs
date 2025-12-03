@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemy : MonoBehaviour
 {
-    public int enemyHealth = 100;
+    public float enemyHealth;
+    public float enemyMaxHealth;
 
     public float enemySpeed = 10f;
 
@@ -18,6 +20,10 @@ public class enemy : MonoBehaviour
 
     public gameManager GM;
 
+    public HealthBarBehaviour HB;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,9 @@ public class enemy : MonoBehaviour
     private void Awake()
     {
         GM = GameObject.FindObjectOfType<gameManager>();
+        enemyMaxHealth = enemyHealth;
+
+        HB.SetHealth(enemyHealth, enemyMaxHealth);
     }
 
     // Update is called once per frame
@@ -39,7 +48,11 @@ public class enemy : MonoBehaviour
             Destroy(gameObject);
             GM.Ink += 5;
         }
+
+        
     }
+
+    
 
     private void FixedUpdate()
     {
@@ -87,7 +100,10 @@ public class enemy : MonoBehaviour
             isImmune = true;
             StartCoroutine("becomeVulnerable");
             Knockback();
+            HB.SetHealth(enemyHealth, enemyMaxHealth);
         }
+        
+
     }
 
     IEnumerator becomeVulnerable()

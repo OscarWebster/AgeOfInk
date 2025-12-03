@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class InfantryHealth : MonoBehaviour
 {
-    public int health = 100;
+    public float health;
+    public float maxHealth;
+
     public float knockbackForce = 10f;
     public Rigidbody2D rb;
     private bool isKnockedBack = false;
@@ -14,6 +16,8 @@ public class InfantryHealth : MonoBehaviour
     public float infantrySpeed = 5f;
 
     public bool isImmune = false;
+
+    public HealthBarBehaviour HB;
 
     private void FixedUpdate()
     {
@@ -57,6 +61,11 @@ public class InfantryHealth : MonoBehaviour
         rb.velocity = new Vector2(-knockbackForce, rb.velocity.y);
     }
 
+    private void Awake()
+    {
+        health = maxHealth;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "enemyweapon")
@@ -72,6 +81,7 @@ public class InfantryHealth : MonoBehaviour
             isImmune = true;
             StartCoroutine("becomeVulnerable");
             Knockback();
+            HB.SetHealth(health, maxHealth);
         }
     }
     IEnumerator becomeVulnerable()
