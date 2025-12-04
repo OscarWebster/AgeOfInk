@@ -175,10 +175,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10000
+  maxHealth: 10000
   knockbackForce: 10
   rb: {fileID: 2051619321592223165}
   infantrySpeed: 5
   isImmune: 0
+  HB: {fileID: 0}
 --- !u!58 &7092687467864645010
 CircleCollider2D:
   m_ObjectHideFlags: 0
