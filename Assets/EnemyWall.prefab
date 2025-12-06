@@ -665,7 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 10
   enemyMaxHealth: 0
-  enemySpeed: 0.1
+  enemySpeed: 0.18
   isImmune: 0
   knockbackForce: 50
   rb: {fileID: 8337838763365669984}

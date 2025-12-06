@@ -15,8 +15,11 @@ public class DrawGlyph : MonoBehaviour
     public GameObject spearPrefab;
     public GameObject WallPrefab;
     public GameObject SpikePrefab;
+    public GameObject upSpearPrefab;
 
     public gameManager GM;
+
+    public bool isUpgraded = false;
 
     private void Start()
     {
@@ -90,7 +93,15 @@ public class DrawGlyph : MonoBehaviour
 
             if (bestMatch.glyphName == "Spear")
             {
-                Instantiate(spearPrefab, worldPos, Quaternion.identity);
+                if(isUpgraded == false)
+                {
+                    Instantiate(spearPrefab, worldPos, Quaternion.identity);
+                }
+                if(isUpgraded == true)
+                {
+                    Instantiate(upSpearPrefab, worldPos, Quaternion.identity);
+                }
+                
 
                 GM.Ink = GM.Ink - 10f;
             }
@@ -107,6 +118,7 @@ public class DrawGlyph : MonoBehaviour
             }
 
             glyphPoints.Clear();
+            isUpgraded = false;
         }
 
         lr.positionCount = glyphPoints.Count;
